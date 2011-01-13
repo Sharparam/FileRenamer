@@ -45,6 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FileRenamerForm.cs">
       <SubType>Form</SubType>
     </Compile>
