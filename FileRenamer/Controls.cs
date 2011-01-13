@@ -4,6 +4,9 @@ namespace FileRenamer
 {
 	public partial class FileRenamerForm
 	{
+		/// <summary>
+		/// Refresh all controls in the form.
+		/// </summary>
 		private void RefreshControls()
 		{
 			if (!browseButton.Enabled)
@@ -66,6 +69,10 @@ namespace FileRenamer
 			}
 		}
 
+		/// <summary>
+		/// Enable or disable all the controls on the form.
+		/// </summary>
+		/// <param name="enabled">True to enable, false to disable.</param>
 		private void ControlsEnabled(bool enabled)
 		{
 			if (enabled)
@@ -93,6 +100,11 @@ namespace FileRenamer
 				additionalBox.Enabled = false;
 			}
 		}
+
+		/// <summary>
+		/// Refresh the file list.
+		/// </summary>
+		/// <param name="path">The directory to grab files from.</param>
 		private void RefreshFileList(string path)
 		{
 			fileList.Items.Clear();
