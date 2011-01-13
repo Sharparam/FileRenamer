@@ -111,10 +111,10 @@ namespace FileRenamer
 			folderBox.Text = path;
 			foreach (var file in Directory.GetFiles(path))
 			{
-				if (!IgnoreFiles.Contains(file))
+				if (!ignoreFiles.Contains(file))
 					fileList.Items.Add(file);
 			}
-			fileListLabel.Text = "Files found (" + IgnoreFiles.Count + " Ignored):";
+			fileListLabel.Text = @"Files found (" + ignoreFiles.Count + @" Ignored):";
 		}
 	}
 }

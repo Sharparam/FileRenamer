@@ -97,7 +97,7 @@
 			this.browseButton.TabIndex = 2;
 			this.browseButton.Text = "Browse...";
 			this.browseButton.UseVisualStyleBackColor = true;
-			this.browseButton.Click += new System.EventHandler(this.browseButton_Click);
+			this.browseButton.Click += new System.EventHandler(this.BrowseButtonClick);
 			// 
 			// fileListLabel
 			// 
@@ -125,7 +125,7 @@
 			this.removeButton.TabIndex = 7;
 			this.removeButton.Text = "Remove Selected File";
 			this.removeButton.UseVisualStyleBackColor = true;
-			this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
+			this.removeButton.Click += new System.EventHandler(this.RemoveButtonClick);
 			// 
 			// startBox
 			// 
@@ -157,7 +157,7 @@
 			this.startReplaceText.Name = "startReplaceText";
 			this.startReplaceText.Size = new System.Drawing.Size(209, 20);
 			this.startReplaceText.TabIndex = 3;
-			this.startReplaceText.TextChanged += new System.EventHandler(this.textChanged);
+			this.startReplaceText.TextChanged += new System.EventHandler(this.TextCheck);
 			// 
 			// label4
 			// 
@@ -174,7 +174,7 @@
 			this.startText.Name = "startText";
 			this.startText.Size = new System.Drawing.Size(209, 20);
 			this.startText.TabIndex = 1;
-			this.startText.TextChanged += new System.EventHandler(this.textChanged);
+			this.startText.TextChanged += new System.EventHandler(this.TextCheck);
 			// 
 			// label3
 			// 
@@ -224,7 +224,7 @@
 			this.endReplaceText.Name = "endReplaceText";
 			this.endReplaceText.Size = new System.Drawing.Size(209, 20);
 			this.endReplaceText.TabIndex = 3;
-			this.endReplaceText.TextChanged += new System.EventHandler(this.textChanged);
+			this.endReplaceText.TextChanged += new System.EventHandler(this.TextCheck);
 			// 
 			// endText
 			// 
@@ -232,7 +232,7 @@
 			this.endText.Name = "endText";
 			this.endText.Size = new System.Drawing.Size(209, 20);
 			this.endText.TabIndex = 1;
-			this.endText.TextChanged += new System.EventHandler(this.textChanged);
+			this.endText.TextChanged += new System.EventHandler(this.TextCheck);
 			// 
 			// label6
 			// 
@@ -270,7 +270,7 @@
 			this.removeString.TabIndex = 9;
 			this.removeString.Text = "Remove";
 			this.removeString.UseVisualStyleBackColor = true;
-			this.removeString.Click += new System.EventHandler(this.removeString_Click);
+			this.removeString.Click += new System.EventHandler(this.RemoveStringClick);
 			// 
 			// addString
 			// 
@@ -280,7 +280,7 @@
 			this.addString.TabIndex = 8;
 			this.addString.Text = "Add";
 			this.addString.UseVisualStyleBackColor = true;
-			this.addString.Click += new System.EventHandler(this.addString_Click);
+			this.addString.Click += new System.EventHandler(this.AddStringClick);
 			// 
 			// replaceText
 			// 
@@ -358,7 +358,7 @@
 			this.startReplace.TabIndex = 11;
 			this.startReplace.Text = "Start Replacing!";
 			this.startReplace.UseVisualStyleBackColor = true;
-			this.startReplace.Click += new System.EventHandler(this.startReplace_Click);
+			this.startReplace.Click += new System.EventHandler(this.StartReplaceClick);
 			// 
 			// logWindow
 			// 
@@ -380,7 +380,7 @@
 			this.refreshButton.TabIndex = 13;
 			this.refreshButton.Text = "Refresh File List";
 			this.refreshButton.UseVisualStyleBackColor = true;
-			this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+			this.refreshButton.Click += new System.EventHandler(this.RefreshButtonClick);
 			// 
 			// clearIgnoreButton
 			// 
@@ -390,7 +390,7 @@
 			this.clearIgnoreButton.TabIndex = 14;
 			this.clearIgnoreButton.Text = "Clear Ignore List";
 			this.clearIgnoreButton.UseVisualStyleBackColor = true;
-			this.clearIgnoreButton.Click += new System.EventHandler(this.clearIgnoreButton_Click);
+			this.clearIgnoreButton.Click += new System.EventHandler(this.ClearIgnoreButtonClick);
 			// 
 			// RenameFilesForm
 			// 
@@ -414,7 +414,7 @@
 			this.MaximizeBox = false;
 			this.Name = "RenameFilesForm";
 			this.Text = "Rename Files";
-			this.Load += new System.EventHandler(this.FileRenamerForm_Load);
+			this.Load += new System.EventHandler(this.FileRenamerFormLoad);
 			this.startBox.ResumeLayout(false);
 			this.startBox.PerformLayout();
 			this.endBox.ResumeLayout(false);
