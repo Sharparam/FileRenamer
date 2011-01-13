@@ -13,7 +13,7 @@ namespace FileRenamer
 			RefreshControls();
 		}
 
-        List<string> IgnoreFiles = new List<string>();
+		List<string> IgnoreFiles = new List<string>();
 
 		private void FileRenamerForm_Load(object sender, EventArgs e)
 		{
@@ -29,16 +29,16 @@ namespace FileRenamer
 		{
 			if (!browseButton.Enabled)
 				return;
-            if (!string.IsNullOrEmpty(folderBox.Text))
-            {
-                refreshButton.Enabled = true;
-                clearIgnoreButton.Enabled = true;
-            }
-            else
-            {
-                refreshButton.Enabled = false;
-                clearIgnoreButton.Enabled = false;
-            }
+			if (!string.IsNullOrEmpty(folderBox.Text))
+			{
+				refreshButton.Enabled = true;
+				clearIgnoreButton.Enabled = true;
+			}
+			else
+			{
+				refreshButton.Enabled = false;
+				clearIgnoreButton.Enabled = false;
+			}
 
 			if (fileList.Items.Count > 0)
 			{
@@ -94,7 +94,7 @@ namespace FileRenamer
 				browseButton.Enabled = true;
 				fileList.Enabled = true;
 				removeButton.Enabled = true;
-                clearIgnoreButton.Enabled = true;
+				clearIgnoreButton.Enabled = true;
 				refreshButton.Enabled = true;
 				startReplace.Enabled = true;
 				startBox.Enabled = true;
@@ -106,7 +106,7 @@ namespace FileRenamer
 				browseButton.Enabled = false;
 				fileList.Enabled = false;
 				removeButton.Enabled = false;
-                clearIgnoreButton.Enabled = false;
+				clearIgnoreButton.Enabled = false;
 				refreshButton.Enabled = false;
 				startReplace.Enabled = false;
 				startBox.Enabled = false;
@@ -117,10 +117,10 @@ namespace FileRenamer
 
 		private void removeButton_Click(object sender, EventArgs e)
 		{
-            IgnoreFiles.Add(fileList.SelectedItem.ToString());
+			IgnoreFiles.Add(fileList.SelectedItem.ToString());
 			fileList.Items.Remove(fileList.SelectedItem);
 			RefreshControls();
-            RefreshFileList(folderBox.Text);
+			RefreshFileList(folderBox.Text);
 		}
 
 		private void RefreshFileList(string path)
@@ -129,15 +129,15 @@ namespace FileRenamer
 			folderBox.Text = path;
 			foreach (var file in Directory.GetFiles(path))
 			{
-                if (!IgnoreFiles.Contains(file))
-				    fileList.Items.Add(file);
+				if (!IgnoreFiles.Contains(file))
+					fileList.Items.Add(file);
 			}
-            fileListLabel.Text = "Files found (" + IgnoreFiles.Count + " Ignored):";
+			fileListLabel.Text = "Files found (" + IgnoreFiles.Count + " Ignored):";
 		}
 
 		private void browseButton_Click(object sender, EventArgs e)
 		{
-            IgnoreFiles.Clear();
+			IgnoreFiles.Clear();
 			DialogResult result = folderDialog.ShowDialog(this);
 			if (result == DialogResult.OK)
 			{
@@ -315,11 +315,11 @@ namespace FileRenamer
 			RefreshControls();
 		}
 
-        private void clearIgnoreButton_Click(object sender, EventArgs e)
-        {
-            IgnoreFiles.Clear();
-            RefreshFileList(folderBox.Text);
-        }
+		private void clearIgnoreButton_Click(object sender, EventArgs e)
+		{
+			IgnoreFiles.Clear();
+			RefreshFileList(folderBox.Text);
+		}
 
 		
 	}
