@@ -62,9 +62,19 @@
 			this.logWindow = new System.Windows.Forms.TextBox();
 			this.refreshButton = new System.Windows.Forms.Button();
 			this.clearIgnoreButton = new System.Windows.Forms.Button();
+			this.advOptions = new System.Windows.Forms.GroupBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.useAdvEnd = new System.Windows.Forms.RadioButton();
+			this.useAdvStart = new System.Windows.Forms.RadioButton();
+			this.sepChar = new System.Windows.Forms.ComboBox();
+			this.sepUseCustom = new System.Windows.Forms.CheckBox();
+			this.sepCustom = new System.Windows.Forms.TextBox();
+			this.label11 = new System.Windows.Forms.Label();
 			this.startBox.SuspendLayout();
 			this.endBox.SuspendLayout();
 			this.additionalBox.SuspendLayout();
+			this.advOptions.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// folderDialog
@@ -197,7 +207,7 @@
 			this.endBox.Size = new System.Drawing.Size(278, 100);
 			this.endBox.TabIndex = 9;
 			this.endBox.TabStop = false;
-			this.endBox.Text = "At the end of the file...";
+			this.endBox.Text = "At the end of the file name...";
 			// 
 			// notUseEndReplace
 			// 
@@ -364,13 +374,14 @@
 			// 
 			this.logWindow.BackColor = System.Drawing.SystemColors.ControlLightLight;
 			this.logWindow.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.logWindow.Location = new System.Drawing.Point(583, 6);
+			this.logWindow.Location = new System.Drawing.Point(583, 247);
 			this.logWindow.Multiline = true;
 			this.logWindow.Name = "logWindow";
 			this.logWindow.ReadOnly = true;
 			this.logWindow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.logWindow.Size = new System.Drawing.Size(529, 517);
+			this.logWindow.Size = new System.Drawing.Size(529, 276);
 			this.logWindow.TabIndex = 12;
+			this.logWindow.Text = "== MESSAGE LOG ==";
 			// 
 			// refreshButton
 			// 
@@ -392,11 +403,111 @@
 			this.clearIgnoreButton.UseVisualStyleBackColor = true;
 			this.clearIgnoreButton.Click += new System.EventHandler(this.ClearIgnoreButtonClick);
 			// 
-			// RenameFilesForm
+			// advOptions
+			// 
+			this.advOptions.Controls.Add(this.label11);
+			this.advOptions.Controls.Add(this.sepCustom);
+			this.advOptions.Controls.Add(this.sepUseCustom);
+			this.advOptions.Controls.Add(this.sepChar);
+			this.advOptions.Controls.Add(this.label10);
+			this.advOptions.Controls.Add(this.label2);
+			this.advOptions.Controls.Add(this.useAdvEnd);
+			this.advOptions.Controls.Add(this.useAdvStart);
+			this.advOptions.Location = new System.Drawing.Point(583, 4);
+			this.advOptions.Name = "advOptions";
+			this.advOptions.Size = new System.Drawing.Size(529, 237);
+			this.advOptions.TabIndex = 15;
+			this.advOptions.TabStop = false;
+			this.advOptions.Text = "Advanced...";
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(6, 51);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(165, 13);
+			this.label10.TabIndex = 3;
+			this.label10.Text = "Separate number from name with ";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(7, 20);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(153, 13);
+			this.label2.TabIndex = 2;
+			this.label2.Text = "Add a number to the file names";
+			// 
+			// useAdvEnd
+			// 
+			this.useAdvEnd.AutoSize = true;
+			this.useAdvEnd.Checked = true;
+			this.useAdvEnd.Location = new System.Drawing.Point(298, 18);
+			this.useAdvEnd.Name = "useAdvEnd";
+			this.useAdvEnd.Size = new System.Drawing.Size(97, 17);
+			this.useAdvEnd.TabIndex = 1;
+			this.useAdvEnd.TabStop = true;
+			this.useAdvEnd.Text = "At end of name";
+			this.useAdvEnd.UseVisualStyleBackColor = true;
+			// 
+			// useAdvStart
+			// 
+			this.useAdvStart.AutoSize = true;
+			this.useAdvStart.Location = new System.Drawing.Point(166, 18);
+			this.useAdvStart.Name = "useAdvStart";
+			this.useAdvStart.Size = new System.Drawing.Size(125, 17);
+			this.useAdvStart.TabIndex = 0;
+			this.useAdvStart.Text = "At beginning of name";
+			this.useAdvStart.UseVisualStyleBackColor = true;
+			// 
+			// sepChar
+			// 
+			this.sepChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.sepChar.FormattingEnabled = true;
+			this.sepChar.Items.AddRange(new object[] {
+            "_",
+            "-",
+            "#",
+            "(Space)",
+            "(Nothing)"});
+			this.sepChar.Location = new System.Drawing.Point(177, 48);
+			this.sepChar.Name = "sepChar";
+			this.sepChar.Size = new System.Drawing.Size(89, 21);
+			this.sepChar.TabIndex = 4;
+			// 
+			// sepUseCustom
+			// 
+			this.sepUseCustom.AutoSize = true;
+			this.sepUseCustom.Location = new System.Drawing.Point(287, 50);
+			this.sepUseCustom.Name = "sepUseCustom";
+			this.sepUseCustom.Size = new System.Drawing.Size(85, 17);
+			this.sepUseCustom.TabIndex = 5;
+			this.sepUseCustom.Text = "Use custom:";
+			this.sepUseCustom.UseVisualStyleBackColor = true;
+			// 
+			// sepCustom
+			// 
+			this.sepCustom.Location = new System.Drawing.Point(378, 48);
+			this.sepCustom.Name = "sepCustom";
+			this.sepCustom.Size = new System.Drawing.Size(100, 20);
+			this.sepCustom.TabIndex = 7;
+			// 
+			// label11
+			// 
+			this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(7, 218);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(175, 13);
+			this.label11.TabIndex = 8;
+			this.label11.Text = "Example of how the name will look: ";
+			// 
+			// FileRenamerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1124, 535);
+			this.Controls.Add(this.advOptions);
 			this.Controls.Add(this.clearIgnoreButton);
 			this.Controls.Add(this.refreshButton);
 			this.Controls.Add(this.logWindow);
@@ -412,7 +523,7 @@
 			this.Controls.Add(this.folderBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.MaximizeBox = false;
-			this.Name = "RenameFilesForm";
+			this.Name = "FileRenamerForm";
 			this.Text = "Rename Files";
 			this.Load += new System.EventHandler(this.FileRenamerFormLoad);
 			this.startBox.ResumeLayout(false);
@@ -421,6 +532,8 @@
 			this.endBox.PerformLayout();
 			this.additionalBox.ResumeLayout(false);
 			this.additionalBox.PerformLayout();
+			this.advOptions.ResumeLayout(false);
+			this.advOptions.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -462,6 +575,15 @@
 		private System.Windows.Forms.TextBox logWindow;
 		private System.Windows.Forms.Button refreshButton;
 		private System.Windows.Forms.Button clearIgnoreButton;
+		private System.Windows.Forms.GroupBox advOptions;
+		private System.Windows.Forms.RadioButton useAdvEnd;
+		private System.Windows.Forms.RadioButton useAdvStart;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.ComboBox sepChar;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.TextBox sepCustom;
+		private System.Windows.Forms.CheckBox sepUseCustom;
 	}
 }
 

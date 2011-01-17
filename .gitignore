@@ -48,3 +48,8 @@ FileRenamer/obj/x86/Release/RenameFiles.pdb
 FileRenamer/obj/x86/Release/RenameFiles.Properties.Resources.resources
 FileRenamer/obj/x86/Release/RenameFiles.RenameFilesForm.resources
 FileRenamer/obj/x86/Release/TempPE/Properties.Resources.Designer.cs.dll
+FileRenamer/bin/Debug/FileRenamer.exe
+.gitignore
+FileRenamer/bin/Debug/FileRenamer.pdb
+FileRenamer/obj/x86/Debug/FileRenamer.exe
+FileRenamer/obj/x86/Debug/
