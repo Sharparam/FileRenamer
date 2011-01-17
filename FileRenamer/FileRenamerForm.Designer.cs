@@ -71,6 +71,8 @@
 			this.sepCustom = new System.Windows.Forms.TextBox();
 			this.label11 = new System.Windows.Forms.Label();
 			this.useNumbers = new System.Windows.Forms.CheckBox();
+			this.useSrndChar = new System.Windows.Forms.CheckBox();
+			this.srndChar = new System.Windows.Forms.ComboBox();
 			this.startBox.SuspendLayout();
 			this.endBox.SuspendLayout();
 			this.additionalBox.SuspendLayout();
@@ -405,6 +407,8 @@
 			// 
 			// advOptions
 			// 
+			this.advOptions.Controls.Add(this.srndChar);
+			this.advOptions.Controls.Add(this.useSrndChar);
 			this.advOptions.Controls.Add(this.useNumbers);
 			this.advOptions.Controls.Add(this.label11);
 			this.advOptions.Controls.Add(this.sepCustom);
@@ -503,6 +507,29 @@
 			this.useNumbers.Text = "Add a number after the file name";
 			this.useNumbers.UseVisualStyleBackColor = true;
 			// 
+			// useSrndChar
+			// 
+			this.useSrndChar.AutoSize = true;
+			this.useSrndChar.Location = new System.Drawing.Point(6, 72);
+			this.useSrndChar.Name = "useSrndChar";
+			this.useSrndChar.Size = new System.Drawing.Size(137, 17);
+			this.useSrndChar.TabIndex = 10;
+			this.useSrndChar.Text = "Sorround numbers with ";
+			this.useSrndChar.UseVisualStyleBackColor = true;
+			// 
+			// srndChar
+			// 
+			this.srndChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.srndChar.FormattingEnabled = true;
+			this.srndChar.Items.AddRange(new object[] {
+            "( )",
+            "[ ]",
+            "{ }"});
+			this.srndChar.Location = new System.Drawing.Point(176, 70);
+			this.srndChar.Name = "srndChar";
+			this.srndChar.Size = new System.Drawing.Size(89, 21);
+			this.srndChar.TabIndex = 11;
+			// 
 			// FileRenamerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,6 +612,8 @@
 		private System.Windows.Forms.TextBox sepCustom;
 		private System.Windows.Forms.CheckBox sepUseCustom;
 		private System.Windows.Forms.CheckBox useNumbers;
+		private System.Windows.Forms.ComboBox srndChar;
+		private System.Windows.Forms.CheckBox useSrndChar;
 	}
 }
 
