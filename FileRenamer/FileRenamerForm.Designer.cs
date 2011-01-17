@@ -514,7 +514,7 @@
 			this.useSrndChar.Name = "useSrndChar";
 			this.useSrndChar.Size = new System.Drawing.Size(137, 17);
 			this.useSrndChar.TabIndex = 10;
-			this.useSrndChar.Text = "Sorround numbers with ";
+			this.useSrndChar.Text = "Surround numbers with ";
 			this.useSrndChar.UseVisualStyleBackColor = true;
 			// 
 			// srndChar
