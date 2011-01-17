@@ -64,13 +64,13 @@
 			this.clearIgnoreButton = new System.Windows.Forms.Button();
 			this.advOptions = new System.Windows.Forms.GroupBox();
 			this.label10 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
 			this.useAdvEnd = new System.Windows.Forms.RadioButton();
 			this.useAdvStart = new System.Windows.Forms.RadioButton();
 			this.sepChar = new System.Windows.Forms.ComboBox();
 			this.sepUseCustom = new System.Windows.Forms.CheckBox();
 			this.sepCustom = new System.Windows.Forms.TextBox();
 			this.label11 = new System.Windows.Forms.Label();
+			this.useNumbers = new System.Windows.Forms.CheckBox();
 			this.startBox.SuspendLayout();
 			this.endBox.SuspendLayout();
 			this.additionalBox.SuspendLayout();
@@ -405,12 +405,12 @@
 			// 
 			// advOptions
 			// 
+			this.advOptions.Controls.Add(this.useNumbers);
 			this.advOptions.Controls.Add(this.label11);
 			this.advOptions.Controls.Add(this.sepCustom);
 			this.advOptions.Controls.Add(this.sepUseCustom);
 			this.advOptions.Controls.Add(this.sepChar);
 			this.advOptions.Controls.Add(this.label10);
-			this.advOptions.Controls.Add(this.label2);
 			this.advOptions.Controls.Add(this.useAdvEnd);
 			this.advOptions.Controls.Add(this.useAdvStart);
 			this.advOptions.Location = new System.Drawing.Point(583, 4);
@@ -423,26 +423,17 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(6, 51);
+			this.label10.Location = new System.Drawing.Point(5, 47);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(165, 13);
 			this.label10.TabIndex = 3;
 			this.label10.Text = "Separate number from name with ";
 			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(7, 20);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(153, 13);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "Add a number to the file names";
-			// 
 			// useAdvEnd
 			// 
 			this.useAdvEnd.AutoSize = true;
 			this.useAdvEnd.Checked = true;
-			this.useAdvEnd.Location = new System.Drawing.Point(298, 18);
+			this.useAdvEnd.Location = new System.Drawing.Point(323, 14);
 			this.useAdvEnd.Name = "useAdvEnd";
 			this.useAdvEnd.Size = new System.Drawing.Size(97, 17);
 			this.useAdvEnd.TabIndex = 1;
@@ -453,7 +444,7 @@
 			// useAdvStart
 			// 
 			this.useAdvStart.AutoSize = true;
-			this.useAdvStart.Location = new System.Drawing.Point(166, 18);
+			this.useAdvStart.Location = new System.Drawing.Point(191, 14);
 			this.useAdvStart.Name = "useAdvStart";
 			this.useAdvStart.Size = new System.Drawing.Size(125, 17);
 			this.useAdvStart.TabIndex = 0;
@@ -470,7 +461,7 @@
             "#",
             "(Space)",
             "(Nothing)"});
-			this.sepChar.Location = new System.Drawing.Point(177, 48);
+			this.sepChar.Location = new System.Drawing.Point(176, 44);
 			this.sepChar.Name = "sepChar";
 			this.sepChar.Size = new System.Drawing.Size(89, 21);
 			this.sepChar.TabIndex = 4;
@@ -478,7 +469,7 @@
 			// sepUseCustom
 			// 
 			this.sepUseCustom.AutoSize = true;
-			this.sepUseCustom.Location = new System.Drawing.Point(287, 50);
+			this.sepUseCustom.Location = new System.Drawing.Point(286, 46);
 			this.sepUseCustom.Name = "sepUseCustom";
 			this.sepUseCustom.Size = new System.Drawing.Size(85, 17);
 			this.sepUseCustom.TabIndex = 5;
@@ -487,7 +478,7 @@
 			// 
 			// sepCustom
 			// 
-			this.sepCustom.Location = new System.Drawing.Point(378, 48);
+			this.sepCustom.Location = new System.Drawing.Point(377, 44);
 			this.sepCustom.Name = "sepCustom";
 			this.sepCustom.Size = new System.Drawing.Size(100, 20);
 			this.sepCustom.TabIndex = 7;
@@ -501,6 +492,16 @@
 			this.label11.Size = new System.Drawing.Size(175, 13);
 			this.label11.TabIndex = 8;
 			this.label11.Text = "Example of how the name will look: ";
+			// 
+			// useNumbers
+			// 
+			this.useNumbers.AutoSize = true;
+			this.useNumbers.Location = new System.Drawing.Point(6, 15);
+			this.useNumbers.Name = "useNumbers";
+			this.useNumbers.Size = new System.Drawing.Size(179, 17);
+			this.useNumbers.TabIndex = 9;
+			this.useNumbers.Text = "Add a number after the file name";
+			this.useNumbers.UseVisualStyleBackColor = true;
 			// 
 			// FileRenamerForm
 			// 
@@ -579,11 +580,11 @@
 		private System.Windows.Forms.RadioButton useAdvEnd;
 		private System.Windows.Forms.RadioButton useAdvStart;
 		private System.Windows.Forms.Label label10;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox sepChar;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.TextBox sepCustom;
 		private System.Windows.Forms.CheckBox sepUseCustom;
+		private System.Windows.Forms.CheckBox useNumbers;
 	}
 }
 
