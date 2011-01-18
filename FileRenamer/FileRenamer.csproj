@@ -54,6 +54,9 @@
     <Compile Include="FileRenamerForm.Designer.cs">
       <DependentUpon>FileRenamerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logging.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FileRenamerForm.resx">

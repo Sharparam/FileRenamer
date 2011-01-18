@@ -11,6 +11,7 @@ namespace FileRenamer
 		{
 			if (!browseButton.Enabled)
 				return;
+
 			if (!string.IsNullOrEmpty(folderBox.Text))
 			{
 				refreshButton.Enabled = true;
@@ -28,6 +29,7 @@ namespace FileRenamer
 				startBox.Enabled = true;
 				endBox.Enabled = true;
 				additionalBox.Enabled = true;
+				//advOptions.Enabled = true;
 			}
 			else
 			{
@@ -35,6 +37,7 @@ namespace FileRenamer
 				startBox.Enabled = false;
 				endBox.Enabled = false;
 				additionalBox.Enabled = false;
+				//advOptions.Enabled = false;
 			}
 
 			if (string.IsNullOrEmpty(startReplaceText.Text) || string.IsNullOrEmpty(startText.Text))
@@ -67,6 +70,34 @@ namespace FileRenamer
 			{
 				useAddOptions.Enabled = true;
 			}
+
+			if (sepUseCustom.Checked)
+			{
+				sepChar.Enabled = false;
+			}
+			else
+			{
+				sepChar.Enabled = true;
+			}
+
+			if (string.IsNullOrEmpty(sepCustom.Text))
+			{
+				sepUseCustom.Checked = false;
+				sepUseCustom.Enabled = false;
+			}
+			else
+			{
+				sepUseCustom.Enabled = true;
+			}
+
+			if (useSrndChar.Checked)
+			{
+				srndChar.Enabled = true;
+			}
+			else
+			{
+				srndChar.Enabled = false;
+			}
 		}
 
 		/// <summary>
@@ -86,6 +117,7 @@ namespace FileRenamer
 				startBox.Enabled = true;
 				endBox.Enabled = true;
 				additionalBox.Enabled = true;
+				advOptions.Enabled = true;
 			}
 			else
 			{
@@ -98,6 +130,7 @@ namespace FileRenamer
 				startBox.Enabled = false;
 				endBox.Enabled = false;
 				additionalBox.Enabled = false;
+				advOptions.Enabled = false;
 			}
 		}
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,19 +8,40 @@ namespace FileRenamer
 {
 	public partial class FileRenamerForm : Form
 	{
-		public FileRenamerForm()
-		{
-			InitializeComponent();
-			RefreshControls();
-		}
-
 		/// <summary>
 		/// List of files that will not be included when renaming.
 		/// </summary>
 		readonly List<string> ignoreFiles = new List<string>();
 
-		private void FileRenamerFormLoad(object sender, EventArgs e)
+		/// <summary>
+		/// List of characters (strings) that can be used to separate the number from the file name.
+		/// </summary>
+		readonly string[] sepChars = new[]
 		{
+		    "_",
+			"-",
+			"#"
+		};
+
+		/// <summary>
+		/// List of characters (strings) that can be used to surround numbers.
+		/// </summary>
+		readonly string[] srndChars = new[]
+		{
+			"( )",
+			"[ ]",
+			"{ }"
+		};
+
+		public FileRenamerForm()
+		{
+			InitializeComponent();
+			//Load values into ComboBoxes
+			sepChar.Items.AddRange(sepChars);
+			srndChar.Items.AddRange(srndChars);
+			//Set the "default" selected item on ComboBoxes
+			sepChar.SelectedIndex = 0;
+			srndChar.SelectedIndex = 0;
 			//Setup the tooltips.
 			var startReplaceToolTip = new ToolTip();
 			startReplaceToolTip.SetToolTip(startReplaceText, "Use %EMPTY% to replace with nothing. (i.e remove the specified string)");
@@ -27,6 +49,7 @@ namespace FileRenamer
 			endReplaceToolTip.SetToolTip(endReplaceText, "Use %EMPTY% to replace with nothing. (i.e remove the specified string)");
 			var customReplaceToolTip = new ToolTip();
 			customReplaceToolTip.SetToolTip(replaceText, "Use %EMPTY% to replace with nothing. (i.e remove the specified string)");
+			RefreshControls();
 		}
 
 		private void RemoveButtonClick(object sender, EventArgs e)
@@ -87,11 +110,11 @@ namespace FileRenamer
 			string prefix = folderBox.Text + "\\";
 			//Get the length of the path.
 			int prefixLength = prefix.Length;
-			logWindow.AppendText("==BEGINNING RENAMING OF FILES==" + Environment.NewLine);
+			LogOut("==BEGINNING RENAMING OF FILES==" + Environment.NewLine, Color.Blue);
 			//Perform replace at beginning of name only if the user wants to.
 			if (!notUseStartReplace.Checked)
 			{
-				logWindow.AppendText(Environment.NewLine + "==REPLACING AT BEGINNING OF FILES==" + Environment.NewLine);
+				LogOut(Environment.NewLine + "==REPLACING AT BEGINNING OF FILES==" + Environment.NewLine, Color.Blue);
 				foreach (var file in fileList.Items)
 				{
 					//Get the old name of the file and remove the path in front of it.
@@ -104,7 +127,7 @@ namespace FileRenamer
 					//NOTE: Could use oldName here?
 					if (!newName.Contains(startText.Text))
 					{
-						logWindow.AppendText("Couldn't replace at start of file name, string not found. On " + oldName + Environment.NewLine);
+						LogOut("Couldn't replace at start of file name, string not found. On " + oldName + Environment.NewLine, Color.Blue);
 					}
 					else
 					{
@@ -121,27 +144,27 @@ namespace FileRenamer
 						{
 							//Rename, "move", the file.
 							File.Move(file.ToString(), newName);
-							logWindow.AppendText("Renamed " + oldName + " to " + newNameShort + Environment.NewLine);
+							LogOut("Renamed " + oldName + " to " + newNameShort + Environment.NewLine);
 						}
 						catch (Exception ex)
 						{
-							logWindow.AppendText("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine);
+							LogOut("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine, Color.Red);
 						}
 					}
 				}
-				logWindow.AppendText("==DONE REPLACING AT BEGINNING OF FILES==" + Environment.NewLine);
+				LogOut("==DONE REPLACING AT BEGINNING OF FILES==" + Environment.NewLine, Color.Green);
 			}
 			else
 			{
 				//NOTE: This is not always "user" specified, change this?
-				logWindow.AppendText(Environment.NewLine + "==SKIPPING REPLACE AT BEGINNING OF FILES (USER SPECIFIED)==" + Environment.NewLine);
+				LogOut(Environment.NewLine + "==SKIPPING REPLACE AT BEGINNING OF FILES (USER SPECIFIED)==" + Environment.NewLine, Color.Blue);
 			}
 			//Refresh the file list before continuing so that the next replace will get updated information.
 			RefreshFileList(folderBox.Text);
 			//Perform replace at end of name only if the user wants to.
 			if (!notUseEndReplace.Checked)
 			{
-				logWindow.AppendText(Environment.NewLine + "==REPLACING END OF FILES==" + Environment.NewLine);
+				LogOut(Environment.NewLine + "==REPLACING END OF FILES==" + Environment.NewLine, Color.Blue);
 				foreach (var file in fileList.Items)
 				{
 					//Get the old name without the path in front of it.
@@ -154,7 +177,7 @@ namespace FileRenamer
 					//NOTE: Could use oldName here?
 					if (!newName.Contains(endText.Text))
 					{
-						logWindow.AppendText("Couldn't replace at end of file name, string not found. On " + oldName + Environment.NewLine);
+						LogOut("Couldn't replace at end of file name, string not found. On " + oldName + Environment.NewLine, Color.Blue);
 					}
 					else
 					{
@@ -178,26 +201,26 @@ namespace FileRenamer
 						{
 							//Rename, "move", the file.
 							File.Move(file.ToString(), newName);
-							logWindow.AppendText("Renamed " + oldName + " to " + newNameShort + Environment.NewLine);
+							LogOut("Renamed " + oldName + " to " + newNameShort + Environment.NewLine);
 						}
 						catch(Exception ex)
 						{
-							logWindow.AppendText("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine);
+							LogOut("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine, Color.Red);
 						}
 					}
 				}
-				logWindow.AppendText("==DONE REPLACING AT END OF FILES==" + Environment.NewLine);
+				LogOut("==DONE REPLACING AT END OF FILES==" + Environment.NewLine, Color.Green);
 			}
 			else
 			{
-				logWindow.AppendText(Environment.NewLine + "==SKIPPING REPLACE AT END OF FILES (USER SPECIFIED)==" + Environment.NewLine);
+				LogOut(Environment.NewLine + "==SKIPPING REPLACE AT END OF FILES (USER SPECIFIED)==" + Environment.NewLine, Color.Blue);
 			}
 			//Refresh the file list before continuing so that the next replace will get updated information.
 			RefreshFileList(folderBox.Text);
 			//Perform the custom replace only if the user wants to.
 			if (useAddOptions.Checked)
 			{
-				logWindow.AppendText(Environment.NewLine + "==BEGINNING CUSTOM REPLACE OF FILE NAMES==" + Environment.NewLine);
+				LogOut(Environment.NewLine + "==BEGINNING CUSTOM REPLACE OF FILE NAMES==" + Environment.NewLine, Color.Blue);
 				foreach (var file in fileList.Items)
 				{
 					//Get the old name of the file without the path in front of it.
@@ -213,7 +236,7 @@ namespace FileRenamer
 							if (newName.Contains(origString.ToString()))
 								newName = newName.Replace(origString.ToString(), replace);
 							else
-								logWindow.AppendText("Couldn't do custom replace, string \"" + origString +  "\" not found. On " + oldName + Environment.NewLine);
+								LogOut("Couldn't do custom replace, string \"" + origString +  "\" not found. On " + oldName + Environment.NewLine, Color.Blue);
 						}
 					}
 					//Get the new name of the file (without the path in front of it)
@@ -229,16 +252,16 @@ namespace FileRenamer
 					}
 					catch (Exception ex)
 					{
-						logWindow.AppendText("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine);
+						LogOut("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine, Color.Red);
 					}
 				}
-				logWindow.AppendText("==DONE REPLACING CUSTOM FILE NAMES==" + Environment.NewLine);
+				LogOut("==DONE REPLACING CUSTOM FILE NAMES==" + Environment.NewLine, Color.Green);
 			}
 			else
 			{
-				logWindow.AppendText(Environment.NewLine + "==SKIPPING CUSTOM REPLACE (USER SPECIFIED)==" + Environment.NewLine);
+				LogOut(Environment.NewLine + "==SKIPPING CUSTOM REPLACE (USER SPECIFIED)==" + Environment.NewLine, Color.Blue);
 			}
-			logWindow.AppendText(Environment.NewLine + "==DONE RENAMING FILES==" + Environment.NewLine);
+			LogOut(Environment.NewLine + "==DONE RENAMING FILES==" + Environment.NewLine, Color.Green);
 			//Refresh the file list.
 			RefreshFileList(folderBox.Text);
 			//Enable the controls again.
@@ -260,6 +283,11 @@ namespace FileRenamer
 		{
 			ignoreFiles.Clear();
 			RefreshFileList(folderBox.Text);
+		}
+
+		private void CheckChanged(object sender, EventArgs e)
+		{
+			RefreshControls();
 		}
 	}
 }

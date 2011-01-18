@@ -59,20 +59,20 @@
 			this.origBox = new System.Windows.Forms.ListBox();
 			this.useAddOptions = new System.Windows.Forms.CheckBox();
 			this.startReplace = new System.Windows.Forms.Button();
-			this.logWindow = new System.Windows.Forms.TextBox();
 			this.refreshButton = new System.Windows.Forms.Button();
 			this.clearIgnoreButton = new System.Windows.Forms.Button();
 			this.advOptions = new System.Windows.Forms.GroupBox();
+			this.srndChar = new System.Windows.Forms.ComboBox();
+			this.useSrndChar = new System.Windows.Forms.CheckBox();
+			this.useNumbers = new System.Windows.Forms.CheckBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.sepCustom = new System.Windows.Forms.TextBox();
+			this.sepUseCustom = new System.Windows.Forms.CheckBox();
+			this.sepChar = new System.Windows.Forms.ComboBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.useAdvEnd = new System.Windows.Forms.RadioButton();
 			this.useAdvStart = new System.Windows.Forms.RadioButton();
-			this.sepChar = new System.Windows.Forms.ComboBox();
-			this.sepUseCustom = new System.Windows.Forms.CheckBox();
-			this.sepCustom = new System.Windows.Forms.TextBox();
-			this.label11 = new System.Windows.Forms.Label();
-			this.useNumbers = new System.Windows.Forms.CheckBox();
-			this.useSrndChar = new System.Windows.Forms.CheckBox();
-			this.srndChar = new System.Windows.Forms.ComboBox();
+			this.logWindow = new System.Windows.Forms.RichTextBox();
 			this.startBox.SuspendLayout();
 			this.endBox.SuspendLayout();
 			this.additionalBox.SuspendLayout();
@@ -372,19 +372,6 @@
 			this.startReplace.UseVisualStyleBackColor = true;
 			this.startReplace.Click += new System.EventHandler(this.StartReplaceClick);
 			// 
-			// logWindow
-			// 
-			this.logWindow.BackColor = System.Drawing.SystemColors.ControlLightLight;
-			this.logWindow.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.logWindow.Location = new System.Drawing.Point(583, 247);
-			this.logWindow.Multiline = true;
-			this.logWindow.Name = "logWindow";
-			this.logWindow.ReadOnly = true;
-			this.logWindow.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.logWindow.Size = new System.Drawing.Size(529, 276);
-			this.logWindow.TabIndex = 12;
-			this.logWindow.Text = "== MESSAGE LOG ==";
-			// 
 			// refreshButton
 			// 
 			this.refreshButton.Location = new System.Drawing.Point(182, 247);
@@ -424,6 +411,74 @@
 			this.advOptions.TabStop = false;
 			this.advOptions.Text = "Advanced...";
 			// 
+			// srndChar
+			// 
+			this.srndChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.srndChar.FormattingEnabled = true;
+			this.srndChar.Location = new System.Drawing.Point(176, 70);
+			this.srndChar.Name = "srndChar";
+			this.srndChar.Size = new System.Drawing.Size(89, 21);
+			this.srndChar.TabIndex = 11;
+			// 
+			// useSrndChar
+			// 
+			this.useSrndChar.AutoSize = true;
+			this.useSrndChar.Location = new System.Drawing.Point(6, 72);
+			this.useSrndChar.Name = "useSrndChar";
+			this.useSrndChar.Size = new System.Drawing.Size(137, 17);
+			this.useSrndChar.TabIndex = 10;
+			this.useSrndChar.Text = "Surround numbers with ";
+			this.useSrndChar.UseVisualStyleBackColor = true;
+			this.useSrndChar.CheckedChanged += new System.EventHandler(this.CheckChanged);
+			// 
+			// useNumbers
+			// 
+			this.useNumbers.AutoSize = true;
+			this.useNumbers.Location = new System.Drawing.Point(6, 15);
+			this.useNumbers.Name = "useNumbers";
+			this.useNumbers.Size = new System.Drawing.Size(179, 17);
+			this.useNumbers.TabIndex = 9;
+			this.useNumbers.Text = "Add a number after the file name";
+			this.useNumbers.UseVisualStyleBackColor = true;
+			// 
+			// label11
+			// 
+			this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(7, 218);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(175, 13);
+			this.label11.TabIndex = 8;
+			this.label11.Text = "Example of how the name will look: ";
+			// 
+			// sepCustom
+			// 
+			this.sepCustom.Location = new System.Drawing.Point(377, 44);
+			this.sepCustom.Name = "sepCustom";
+			this.sepCustom.Size = new System.Drawing.Size(100, 20);
+			this.sepCustom.TabIndex = 7;
+			this.sepCustom.TextChanged += new System.EventHandler(this.TextCheck);
+			// 
+			// sepUseCustom
+			// 
+			this.sepUseCustom.AutoSize = true;
+			this.sepUseCustom.Location = new System.Drawing.Point(286, 46);
+			this.sepUseCustom.Name = "sepUseCustom";
+			this.sepUseCustom.Size = new System.Drawing.Size(85, 17);
+			this.sepUseCustom.TabIndex = 5;
+			this.sepUseCustom.Text = "Use custom:";
+			this.sepUseCustom.UseVisualStyleBackColor = true;
+			this.sepUseCustom.CheckedChanged += new System.EventHandler(this.CheckChanged);
+			// 
+			// sepChar
+			// 
+			this.sepChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.sepChar.FormattingEnabled = true;
+			this.sepChar.Location = new System.Drawing.Point(176, 44);
+			this.sepChar.Name = "sepChar";
+			this.sepChar.Size = new System.Drawing.Size(89, 21);
+			this.sepChar.TabIndex = 4;
+			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
@@ -455,90 +510,28 @@
 			this.useAdvStart.Text = "At beginning of name";
 			this.useAdvStart.UseVisualStyleBackColor = true;
 			// 
-			// sepChar
+			// logWindow
 			// 
-			this.sepChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.sepChar.FormattingEnabled = true;
-			this.sepChar.Items.AddRange(new object[] {
-            "_",
-            "-",
-            "#",
-            "(Space)",
-            "(Nothing)"});
-			this.sepChar.Location = new System.Drawing.Point(176, 44);
-			this.sepChar.Name = "sepChar";
-			this.sepChar.Size = new System.Drawing.Size(89, 21);
-			this.sepChar.TabIndex = 4;
-			// 
-			// sepUseCustom
-			// 
-			this.sepUseCustom.AutoSize = true;
-			this.sepUseCustom.Location = new System.Drawing.Point(286, 46);
-			this.sepUseCustom.Name = "sepUseCustom";
-			this.sepUseCustom.Size = new System.Drawing.Size(85, 17);
-			this.sepUseCustom.TabIndex = 5;
-			this.sepUseCustom.Text = "Use custom:";
-			this.sepUseCustom.UseVisualStyleBackColor = true;
-			// 
-			// sepCustom
-			// 
-			this.sepCustom.Location = new System.Drawing.Point(377, 44);
-			this.sepCustom.Name = "sepCustom";
-			this.sepCustom.Size = new System.Drawing.Size(100, 20);
-			this.sepCustom.TabIndex = 7;
-			// 
-			// label11
-			// 
-			this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(7, 218);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(175, 13);
-			this.label11.TabIndex = 8;
-			this.label11.Text = "Example of how the name will look: ";
-			// 
-			// useNumbers
-			// 
-			this.useNumbers.AutoSize = true;
-			this.useNumbers.Location = new System.Drawing.Point(6, 15);
-			this.useNumbers.Name = "useNumbers";
-			this.useNumbers.Size = new System.Drawing.Size(179, 17);
-			this.useNumbers.TabIndex = 9;
-			this.useNumbers.Text = "Add a number after the file name";
-			this.useNumbers.UseVisualStyleBackColor = true;
-			// 
-			// useSrndChar
-			// 
-			this.useSrndChar.AutoSize = true;
-			this.useSrndChar.Location = new System.Drawing.Point(6, 72);
-			this.useSrndChar.Name = "useSrndChar";
-			this.useSrndChar.Size = new System.Drawing.Size(137, 17);
-			this.useSrndChar.TabIndex = 10;
-			this.useSrndChar.Text = "Surround numbers with ";
-			this.useSrndChar.UseVisualStyleBackColor = true;
-			// 
-			// srndChar
-			// 
-			this.srndChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.srndChar.FormattingEnabled = true;
-			this.srndChar.Items.AddRange(new object[] {
-            "( )",
-            "[ ]",
-            "{ }"});
-			this.srndChar.Location = new System.Drawing.Point(176, 70);
-			this.srndChar.Name = "srndChar";
-			this.srndChar.Size = new System.Drawing.Size(89, 21);
-			this.srndChar.TabIndex = 11;
+			this.logWindow.BackColor = System.Drawing.SystemColors.ControlLightLight;
+			this.logWindow.DetectUrls = false;
+			this.logWindow.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.logWindow.Location = new System.Drawing.Point(583, 247);
+			this.logWindow.Name = "logWindow";
+			this.logWindow.ReadOnly = true;
+			this.logWindow.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+			this.logWindow.Size = new System.Drawing.Size(529, 276);
+			this.logWindow.TabIndex = 16;
+			this.logWindow.Text = "==MESSAGE LOG==";
 			// 
 			// FileRenamerForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1124, 535);
+			this.Controls.Add(this.logWindow);
 			this.Controls.Add(this.advOptions);
 			this.Controls.Add(this.clearIgnoreButton);
 			this.Controls.Add(this.refreshButton);
-			this.Controls.Add(this.logWindow);
 			this.Controls.Add(this.startReplace);
 			this.Controls.Add(this.additionalBox);
 			this.Controls.Add(this.endBox);
@@ -553,7 +546,6 @@
 			this.MaximizeBox = false;
 			this.Name = "FileRenamerForm";
 			this.Text = "Rename Files";
-			this.Load += new System.EventHandler(this.FileRenamerFormLoad);
 			this.startBox.ResumeLayout(false);
 			this.startBox.PerformLayout();
 			this.endBox.ResumeLayout(false);
@@ -600,7 +592,6 @@
 		private System.Windows.Forms.ListBox replaceBox;
 		private System.Windows.Forms.ListBox origBox;
 		private System.Windows.Forms.Button startReplace;
-		private System.Windows.Forms.TextBox logWindow;
 		private System.Windows.Forms.Button refreshButton;
 		private System.Windows.Forms.Button clearIgnoreButton;
 		private System.Windows.Forms.GroupBox advOptions;
@@ -614,6 +605,7 @@
 		private System.Windows.Forms.CheckBox useNumbers;
 		private System.Windows.Forms.ComboBox srndChar;
 		private System.Windows.Forms.CheckBox useSrndChar;
+		private System.Windows.Forms.RichTextBox logWindow;
 	}
 }
 
