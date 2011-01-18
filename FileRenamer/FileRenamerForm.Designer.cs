@@ -521,7 +521,7 @@
 			this.logWindow.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
 			this.logWindow.Size = new System.Drawing.Size(529, 276);
 			this.logWindow.TabIndex = 16;
-			this.logWindow.Text = "==MESSAGE LOG==";
+			this.logWindow.Text = "";
 			// 
 			// FileRenamerForm
 			// 
