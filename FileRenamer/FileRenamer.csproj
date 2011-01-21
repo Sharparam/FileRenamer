@@ -59,6 +59,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReplaceTool.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="FileRenamerForm.resx">
       <DependentUpon>FileRenamerForm.cs</DependentUpon>
     </EmbeddedResource>
