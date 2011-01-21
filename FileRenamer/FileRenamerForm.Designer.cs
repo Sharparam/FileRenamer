@@ -62,6 +62,7 @@
 			this.refreshButton = new System.Windows.Forms.Button();
 			this.clearIgnoreButton = new System.Windows.Forms.Button();
 			this.advOptions = new System.Windows.Forms.GroupBox();
+			this.useSepChar = new System.Windows.Forms.CheckBox();
 			this.srndChar = new System.Windows.Forms.ComboBox();
 			this.useSrndChar = new System.Windows.Forms.CheckBox();
 			this.useNumbers = new System.Windows.Forms.CheckBox();
@@ -72,7 +73,6 @@
 			this.useAdvEnd = new System.Windows.Forms.RadioButton();
 			this.useAdvStart = new System.Windows.Forms.RadioButton();
 			this.logWindow = new System.Windows.Forms.RichTextBox();
-			this.useSepChar = new System.Windows.Forms.CheckBox();
 			this.startBox.SuspendLayout();
 			this.endBox.SuspendLayout();
 			this.additionalBox.SuspendLayout();
@@ -411,6 +411,17 @@
 			this.advOptions.TabStop = false;
 			this.advOptions.Text = "Advanced...";
 			// 
+			// useSepChar
+			// 
+			this.useSepChar.AutoSize = true;
+			this.useSepChar.Location = new System.Drawing.Point(6, 46);
+			this.useSepChar.Name = "useSepChar";
+			this.useSepChar.Size = new System.Drawing.Size(181, 17);
+			this.useSepChar.TabIndex = 12;
+			this.useSepChar.Text = "Separate number from name with";
+			this.useSepChar.UseVisualStyleBackColor = true;
+			this.useSepChar.CheckedChanged += new System.EventHandler(this.CheckChanged);
+			// 
 			// srndChar
 			// 
 			this.srndChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -513,16 +524,6 @@
 			this.logWindow.Size = new System.Drawing.Size(529, 276);
 			this.logWindow.TabIndex = 16;
 			this.logWindow.Text = "";
-			// 
-			// useSepChar
-			// 
-			this.useSepChar.AutoSize = true;
-			this.useSepChar.Location = new System.Drawing.Point(6, 46);
-			this.useSepChar.Name = "useSepChar";
-			this.useSepChar.Size = new System.Drawing.Size(181, 17);
-			this.useSepChar.TabIndex = 12;
-			this.useSepChar.Text = "Separate number from name with";
-			this.useSepChar.UseVisualStyleBackColor = true;
 			// 
 			// FileRenamerForm
 			// 

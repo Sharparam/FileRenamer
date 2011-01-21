@@ -71,6 +71,19 @@ namespace FileRenamer
 				useAddOptions.Enabled = true;
 			}
 
+			if (useSepChar.Checked)
+			{
+				sepChar.Enabled = true;
+				sepUseCustom.Enabled = true;
+				sepCustom.Enabled = true;
+			}
+			else
+			{
+				sepChar.Enabled = false;
+				sepUseCustom.Enabled = false;
+				sepCustom.Enabled = false;
+			}
+
 			if (sepUseCustom.Checked)
 			{
 				sepChar.Enabled = false;

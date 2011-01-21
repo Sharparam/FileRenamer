@@ -245,8 +245,20 @@ namespace FileRenamer
 				else
 					num = number.ToString();
 
-				newName = newName + sep + num + ext;
-				LogOut("DEBUG: Numerated filename: " + newName);
+				string newNameShort = newName + sep + num + ext;
+				newName = prefix + newName + sep + num + ext;
+				string oldNameShort = oldName;
+				oldName = prefix + oldName;
+				try
+				{
+					//Rename, "move", the file.
+					File.Move(oldName, newName);
+					logWindow.AppendText("Renamed " + oldNameShort + " to " + newNameShort + Environment.NewLine);
+				}
+				catch (Exception ex)
+				{
+					LogOut("ERROR: Unable to rename file. Details: " + ex.Message + Environment.NewLine, Color.Red);
+				}
 			}
 		}
 	}
