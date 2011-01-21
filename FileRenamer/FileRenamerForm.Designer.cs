@@ -69,10 +69,10 @@
 			this.sepCustom = new System.Windows.Forms.TextBox();
 			this.sepUseCustom = new System.Windows.Forms.CheckBox();
 			this.sepChar = new System.Windows.Forms.ComboBox();
-			this.label10 = new System.Windows.Forms.Label();
 			this.useAdvEnd = new System.Windows.Forms.RadioButton();
 			this.useAdvStart = new System.Windows.Forms.RadioButton();
 			this.logWindow = new System.Windows.Forms.RichTextBox();
+			this.useSepChar = new System.Windows.Forms.CheckBox();
 			this.startBox.SuspendLayout();
 			this.endBox.SuspendLayout();
 			this.additionalBox.SuspendLayout();
@@ -394,6 +394,7 @@
 			// 
 			// advOptions
 			// 
+			this.advOptions.Controls.Add(this.useSepChar);
 			this.advOptions.Controls.Add(this.srndChar);
 			this.advOptions.Controls.Add(this.useSrndChar);
 			this.advOptions.Controls.Add(this.useNumbers);
@@ -401,7 +402,6 @@
 			this.advOptions.Controls.Add(this.sepCustom);
 			this.advOptions.Controls.Add(this.sepUseCustom);
 			this.advOptions.Controls.Add(this.sepChar);
-			this.advOptions.Controls.Add(this.label10);
 			this.advOptions.Controls.Add(this.useAdvEnd);
 			this.advOptions.Controls.Add(this.useAdvStart);
 			this.advOptions.Location = new System.Drawing.Point(583, 4);
@@ -453,7 +453,7 @@
 			// 
 			// sepCustom
 			// 
-			this.sepCustom.Location = new System.Drawing.Point(377, 44);
+			this.sepCustom.Location = new System.Drawing.Point(379, 44);
 			this.sepCustom.Name = "sepCustom";
 			this.sepCustom.Size = new System.Drawing.Size(100, 20);
 			this.sepCustom.TabIndex = 7;
@@ -462,7 +462,7 @@
 			// sepUseCustom
 			// 
 			this.sepUseCustom.AutoSize = true;
-			this.sepUseCustom.Location = new System.Drawing.Point(286, 46);
+			this.sepUseCustom.Location = new System.Drawing.Point(288, 46);
 			this.sepUseCustom.Name = "sepUseCustom";
 			this.sepUseCustom.Size = new System.Drawing.Size(85, 17);
 			this.sepUseCustom.TabIndex = 5;
@@ -474,19 +474,10 @@
 			// 
 			this.sepChar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.sepChar.FormattingEnabled = true;
-			this.sepChar.Location = new System.Drawing.Point(176, 44);
+			this.sepChar.Location = new System.Drawing.Point(193, 44);
 			this.sepChar.Name = "sepChar";
 			this.sepChar.Size = new System.Drawing.Size(89, 21);
 			this.sepChar.TabIndex = 4;
-			// 
-			// label10
-			// 
-			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(5, 47);
-			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(165, 13);
-			this.label10.TabIndex = 3;
-			this.label10.Text = "Separate number from name with ";
 			// 
 			// useAdvEnd
 			// 
@@ -522,6 +513,16 @@
 			this.logWindow.Size = new System.Drawing.Size(529, 276);
 			this.logWindow.TabIndex = 16;
 			this.logWindow.Text = "";
+			// 
+			// useSepChar
+			// 
+			this.useSepChar.AutoSize = true;
+			this.useSepChar.Location = new System.Drawing.Point(6, 46);
+			this.useSepChar.Name = "useSepChar";
+			this.useSepChar.Size = new System.Drawing.Size(181, 17);
+			this.useSepChar.TabIndex = 12;
+			this.useSepChar.Text = "Separate number from name with";
+			this.useSepChar.UseVisualStyleBackColor = true;
 			// 
 			// FileRenamerForm
 			// 
@@ -597,7 +598,6 @@
 		private System.Windows.Forms.GroupBox advOptions;
 		private System.Windows.Forms.RadioButton useAdvEnd;
 		private System.Windows.Forms.RadioButton useAdvStart;
-		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.ComboBox sepChar;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.TextBox sepCustom;
@@ -606,6 +606,7 @@
 		private System.Windows.Forms.ComboBox srndChar;
 		private System.Windows.Forms.CheckBox useSrndChar;
 		private System.Windows.Forms.RichTextBox logWindow;
+		private System.Windows.Forms.CheckBox useSepChar;
 	}
 }
 
