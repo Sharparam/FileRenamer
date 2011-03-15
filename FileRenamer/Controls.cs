@@ -11,31 +11,15 @@ namespace FileRenamer
 		{
 			if (!browseButton.Enabled)
 				return;
-			if (!string.IsNullOrEmpty(folderBox.Text))
-			{
-				refreshButton.Enabled = true;
-				clearIgnoreButton.Enabled = true;
-			}
-			else
-			{
-				refreshButton.Enabled = false;
-				clearIgnoreButton.Enabled = false;
-			}
+			bool condition = !string.IsNullOrEmpty(folderBox.Text);
+			refreshButton.Enabled = condition;
+			clearIgnoreButton.Enabled = condition;
 
-			if (fileList.Items.Count > 0)
-			{
-				startReplace.Enabled = true;
-				startBox.Enabled = true;
-				endBox.Enabled = true;
-				additionalBox.Enabled = true;
-			}
-			else
-			{
-				startReplace.Enabled = false;
-				startBox.Enabled = false;
-				endBox.Enabled = false;
-				additionalBox.Enabled = false;
-			}
+			condition = fileList.Items.Count > 0;
+			startReplace.Enabled = condition;
+			startBox.Enabled = condition;
+			endBox.Enabled = condition;
+			additionalBox.Enabled = condition;
 
 			if (string.IsNullOrEmpty(startReplaceText.Text) || string.IsNullOrEmpty(startText.Text))
 			{
@@ -75,30 +59,15 @@ namespace FileRenamer
 		/// <param name="enabled">True to enable, false to disable.</param>
 		private void ControlsEnabled(bool enabled)
 		{
-			if (enabled)
-			{
-				browseButton.Enabled = true;
-				fileList.Enabled = true;
-				removeButton.Enabled = true;
-				clearIgnoreButton.Enabled = true;
-				refreshButton.Enabled = true;
-				startReplace.Enabled = true;
-				startBox.Enabled = true;
-				endBox.Enabled = true;
-				additionalBox.Enabled = true;
-			}
-			else
-			{
-				browseButton.Enabled = false;
-				fileList.Enabled = false;
-				removeButton.Enabled = false;
-				clearIgnoreButton.Enabled = false;
-				refreshButton.Enabled = false;
-				startReplace.Enabled = false;
-				startBox.Enabled = false;
-				endBox.Enabled = false;
-				additionalBox.Enabled = false;
-			}
+			browseButton.Enabled = enabled;
+			fileList.Enabled = enabled;
+			removeButton.Enabled = enabled;
+			clearIgnoreButton.Enabled = enabled;
+			refreshButton.Enabled = enabled;
+			startReplace.Enabled = enabled;
+			startBox.Enabled = enabled;
+			endBox.Enabled = enabled;
+			additionalBox.Enabled = enabled;
 		}
 
 		/// <summary>
@@ -114,7 +83,7 @@ namespace FileRenamer
 				if (!ignoreFiles.Contains(file))
 					fileList.Items.Add(file);
 			}
-			fileListLabel.Text = @"Files found (" + ignoreFiles.Count + @" Ignored):";
+			fileListLabel.Text = "Files found (" + ignoreFiles.Count + " were ignored):";
 		}
 	}
 }
